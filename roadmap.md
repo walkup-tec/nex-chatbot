@@ -4,3 +4,4 @@
 - [x] Criar editor de automações, equipes, conexões, relatórios e configurações.
 - [x] Preparar contratos de integração frontend, sem APIs ou backend.
 - [x] Validar interações e apresentação.
+- [x] Adicionar e verificar modo escuro compatível com o tema do sistema NEX.
