@@ -14,3 +14,4 @@
 - Domain types and integration adapter contracts live in browser-safe modules; no server connections are implemented because this delivery is frontend-only.
 - Operational screens start empty and local changes live only for the current session; external operations must never report success without an integration response.
 - The automation editor uses React Flow and Excel imports use SheetJS to avoid custom implementations of graph editing and spreadsheet parsing.
+- Appearance is driven by the shared document dark class; the shell observes host theme changes and stores only a standalone appearance preference, so the module can follow the parent NEX workspace without storing operational data.
