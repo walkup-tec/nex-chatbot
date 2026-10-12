@@ -6,7 +6,7 @@ import { useWorkspace, uid } from '@/lib/nex/store';
 import { assumeConversation, closeConversation, transferConversation } from '@/lib/nex/model';
 import { PageHeading, Modal, Field, SaveActions } from './common';
 export function Inbox() {
- const { data, update } = useWorkspace(); const [selectedId, setSelectedId] = useState(''); const [search, setSearch] = useState(''); const [tab, setTab] = useState('Todos'); const [draft, setDraft] = useState(''); const [modal, setModal] = useState(''); const [error, setError] = useState('');
+ const { data, update } = useWorkspace(); const [selectedId, setSelectedId] = useState(data.activeConversationId || ''); const [search, setSearch] = useState(''); const [tab, setTab] = useState('Todos'); const [draft, setDraft] = useState(''); const [modal, setModal] = useState(''); const [error, setError] = useState('');
  const selected = data.conversations.find(c => c.id === selectedId); const contact = data.contacts.find(c => c.id === selected?.contactId);
  const list = data.conversations.filter(c => { const person = data.contacts.find(p => p.id === c.contactId); return person?.name.toLowerCase().includes(search.toLowerCase()) && (tab === 'Todos' || (tab === 'Meus' && c.assigneeId === 'current') || (tab === 'Em fila' && c.status === 'queue')); });
  function change(fn: (c: NonNullable<typeof selected>) => NonNullable<typeof selected>) { if (!selected) return; try { const next = fn(selected); update(s => ({ ...s, conversations: s.conversations.map(c => c.id === selected.id ? next : c) })); setModal(''); setError(''); } catch(e) { setError(e instanceof Error ? e.message : 'Não foi possível atualizar.'); } }
