@@ -1,6 +1,6 @@
 export type ConversationStatus = 'queue' | 'active' | 'closed';
 export interface Contact { id: string; name: string; phone: string; email: string; tags: string[]; companyId: string }
-export interface Conversation { id: string; contactId: string; connectionId: string; status: ConversationStatus; assigneeId?: string; botPaused: boolean; createdAt: string; closeReason?: string }
+export interface Conversation { id: string; contactId: string; connectionId: string; status: ConversationStatus; assigneeId?: string | undefined; botPaused: boolean; createdAt: string; closeReason?: string }
 export interface Message { id: string; conversationId: string; text: string; direction: 'in' | 'out'; status: 'pending' | 'failed' | 'sent'; createdAt: string }
 export interface Product { id: string; name: string; category: string; price: number; active: boolean }
 export interface Opportunity { id: string; contactId: string; productId: string; title: string; value: number; stage: string; funnel: string }
